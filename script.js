@@ -455,7 +455,7 @@ if (badge) {
 // ---- Text order form ----
 // CHANGE THE PHONE NUMBER HERE LATER (digits only, with country code, e.g. +14033344500)
 const ORDER_PHONE = '+17164741447';
-const INSTAGRAM_DM = 'https://ig.me/m/Cakravings';
+const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
 
 (function initTextOrder() {
   const form = document.getElementById('textOrderForm');
@@ -478,9 +478,9 @@ const INSTAGRAM_DM = 'https://ig.me/m/Cakravings';
   const origMsgPh = message.placeholder;
   const CAKE_FLAVOURS = ['Chocolate', 'Chocolate Truffle Cake', 'Strawberry', 'Vanilla', 'Mixed Fruits', 'Pineapple', 'Mixed Berries', 'Coffee'];
   const MODES = {
-    cake: { title: 'Place Your Order', sub: 'Pick your flavour and size, tell us the details, and send it to us by text message.', fl: 'Flavour', flPh: 'Choose a flavour', flOpts: null, ppl: 'How many people?', pplPh: 'Choose size', pplOpts: null, flKey: 'Flavour', pplKey: 'For', need: 'a flavour and how many people', note: '' },
-    cupcake: { title: 'Order Cupcakes', sub: 'Pick your quantity and flavour, tell us the details, and send it to us by text message.', fl: 'Flavour', flPh: 'Choose a flavour', flOpts: CAKE_FLAVOURS, ppl: 'How many cupcakes?', pplPh: 'Choose quantity', pplOpts: ['6 cupcakes', '12 cupcakes', '24 cupcakes', 'Custom (more than 24)'], flKey: 'Cupcake flavour', pplKey: 'Quantity', need: 'a flavour and quantity', note: 'Minimum order is 6 cupcakes, in any flavour. For more than 24, choose Custom and tell us the quantity in your message.', msgPh: 'Custom quantity, special requests, design ideas, allergies, anything else you would like us to know' },
-    chocolate: { title: 'Order Chocolates', sub: 'Pick your category and chocolate type, tell us the details, and send it to us by text message.', fl: 'Category', flPh: 'Choose a category', flOpts: ['Regular', 'Almond & Raisins', 'Dried Fruits & Cranberries', 'Gourmet Chocolate Sticks', 'Assorted'], ppl: 'Chocolate type', pplPh: 'Choose a type', pplOpts: ['Milk', 'Semi-Sweet', 'White', 'Assorted'], flKey: 'Chocolate category', pplKey: 'Chocolate type', need: 'a category and chocolate type', note: '', msgPh: 'Quantity, special requests, gifting details, allergies, anything else you would like us to know' }
+    cake: { title: 'Place Your Order', sub: 'Pick your flavour and size, tell us the details, and send it to us by text or Instagram.', fl: 'Flavour', flPh: 'Choose a flavour', flOpts: null, ppl: 'How many people?', pplPh: 'Choose size', pplOpts: null, flKey: 'Flavour', pplKey: 'For', need: 'a flavour and how many people', note: '' },
+    cupcake: { title: 'Order Cupcakes', sub: 'Pick your quantity and flavour, tell us the details, and send it to us by text or Instagram.', fl: 'Flavour', flPh: 'Choose a flavour', flOpts: CAKE_FLAVOURS, ppl: 'How many cupcakes?', pplPh: 'Choose quantity', pplOpts: ['6 cupcakes', '12 cupcakes', '24 cupcakes', 'Custom (more than 24)'], flKey: 'Cupcake flavour', pplKey: 'Quantity', need: 'a flavour and quantity', note: 'Minimum order is 6 cupcakes, in any flavour. For more than 24, choose Custom and tell us the quantity in your message.', msgPh: 'Custom quantity, special requests, design ideas, allergies, anything else you would like us to know' },
+    chocolate: { title: 'Order Chocolates', sub: 'Pick your category and chocolate type, tell us the details, and send it to us by text or Instagram.', fl: 'Category', flPh: 'Choose a category', flOpts: ['Regular', 'Almond & Raisins', 'Dried Fruits & Cranberries', 'Gourmet Chocolate Sticks', 'Assorted'], ppl: 'Chocolate type', pplPh: 'Choose a type', pplOpts: ['Milk', 'Semi-Sweet', 'White', 'Assorted'], flKey: 'Chocolate category', pplKey: 'Chocolate type', need: 'a category and chocolate type', note: '', msgPh: 'Quantity, special requests, gifting details, allergies, anything else you would like us to know' }
   };
   let curMode = 'cake';
   function fill(sel, ph, opts) {
