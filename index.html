@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cakravings Bakery | Custom Cakes &amp; Treats in Buffalo, NY</title>
+  <meta name="description" content="Cakravings Bakery in Buffalo, NY — freshly homebaked custom celebration cakes, fudge brownies, and artisan tea cakes handcrafted to order." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%23f8ccde%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-size=%2738%27 text-anchor=%27middle%27 font-family=%27Georgia%27 font-weight=%27bold%27 fill=%27%23381c2d%27%3EC%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css?v=83" />
+</head>
+<body>
+
+  <!-- ===== CINEMATIC ENTRANCE: video shows through the letters, then we zoom in (not skippable) ===== -->
+  <div id="doorOverlay" class="bake-intro" aria-hidden="true">
+    <video class="ib-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg"><source src="hero-video-4k.mp4" type="video/mp4" /></video>
+    <div class="ib-blend"><div class="ib-reveal"><h1 class="ib-word"><span class="ib-l1">CAKR</span><span class="ib-a">A</span><span class="ib-r1">VINGS</span></h1></div></div>
+    <div class="ib-top">
+      <i class="ib-line ib-t"></i><i class="ib-line ib-b"></i><i class="ib-line ib-l"></i><i class="ib-line ib-r"></i>
+      <p class="ib-tag">BY ANANYA</p>
+    </div>
+  </div>
+
+  <!-- ===== FLOATING PARTICLES (Delicate light circles) ===== -->
+  <div id="particles"></div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo" aria-label="Go to home">
+      <span class="logo-c">C</span>akravings
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#flavours">Menu &amp; Pricing</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#order" class="nav-order-btn">Order Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="home" class="hero"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg"><source src="hero-video-4k.mp4" type="video/mp4" /></video><div class="hero-overlay"></div>
+    <!-- Animated bubbles / light rings -->
+    <div class="hero-bubbles">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="title-line1">Cakravings</span>
+        <span class="title-line2">Bakery</span>
+      </h1>
+      <p class="hero-sub">Customised cakes crafted with passion, artful design, and the finest ingredients for every special milestone.</p>
+      <div class="hero-badge">Freshly Homebaked</div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Our Story</div>
+        <h2>Baked with Care &amp; Artistry</h2>
+        <div class="section-divider-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Welcome to <strong>Cakravings Bakery</strong> — your boutique destination in <strong>Buffalo, NY</strong> for freshly homebaked custom cakes and treats. Every order is meticulously prepared from scratch using wholesome, premium ingredients.</p>
+          <p>We specialise in tailor-made celebration cakes designed to match your theme, aesthetic, and vision — perfect for birthdays, anniversaries, weddings, graduations, and intimate celebrations.</p>
+          <div class="about-features">
+            <div class="feature-item"><span class="feat-dot"></span> 100% Homebaked</div>
+            <div class="feature-item"><span class="feat-dot"></span> Custom Artful Designs</div>
+            <div class="feature-item"><span class="feat-dot"></span> Premium Quality Ingredients</div>
+            <div class="feature-item"><span class="feat-dot"></span> All Special Occasions</div>
+          </div>
+        </div>
+        <div class="about-products">
+          <h3>Our Confections</h3>
+          <div class="product-list">
+            <div class="product-chip">Custom Cakes</div>
+            <div class="product-chip">Cupcakes</div>
+            <div class="product-chip">Brownies</div>
+            <div class="product-chip">Chocolates</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-item">
+              <span class="contact-icon">TEL</span>
+              <span>Call or text for inquiries or to order: <a href="tel:+17164741447">(716) 474-1447</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU & PRICING SECTION ===== -->
+  <section id="flavours" class="flavours">
+    <div class="container">
+      <div class="section-header">
+        <h2>Menu &amp; Pricing</h2>
+        <div class="section-divider-line"></div>
+        <p class="section-desc">Handcrafted cakes, tea cakes, cupcakes, brownies, and chocolates made fresh to order &mdash; select any item to view details and pricing.</p>
+      </div>
+
+      <!-- Category filter tabs -->
+      <div class="flavour-tabs">
+        <button class="flavour-tab active" data-filter="all">Full Menu</button>
+        <button class="flavour-tab" data-filter="cakes">Cakes</button>
+        <button class="flavour-tab" data-filter="teacakes">Tea Cakes</button>
+        <button class="flavour-tab" data-filter="cupcakes">Cupcakes</button>
+        <button class="flavour-tab" data-filter="brownies">Brownies</button>
+        <button class="flavour-tab" data-filter="chocolates">Chocolates</button>
+      </div>
+
+      <!-- 1. CAKES -->
+      <div class="menu-cat-block" data-cat="cakes">
+        <div class="menu-cat-head">
+          <h3>Cakes</h3>
+          <span class="menu-cat-line"></span>
+        </div>
+        <div class="flavours-grid">
+          <!-- Chocolate (Image: 13.JPG) -->
+          <div class="flavour-card" data-category="cakes" style="--delay:0s">
+            <div class="flavour-img-wrap"><img src="13.JPG" alt="Rich chocolate cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Cake</span>
+              <h3>Chocolate</h3>
+              <p>Velvety dark chocolate sponge layered with luscious Belgian ganache and silky frosting.</p>
+            </div>
+          </div>
+
+          <!-- Chocolate Truffle Cake (Image: 8_fixed.jpg) -->
+          <div class="flavour-card" data-category="cakes" style="--delay:0.05s">
+            <div class="flavour-img-wrap"><img src="8_fixed.jpg" alt="Chocolate truffle cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Cake</span>
+              <h3>Chocolate Truffle Cake</h3>
+              <p>Rich, silky chocolate truffle layers finished with a glossy ganache and a decadent chocolate topping.</p>
+            </div>
+          </div>
+
+          <!-- Strawberry (Image: Remove_titles_and_brighten_image_e98116ed_4K.jpg) -->
+          <div class="flavour-card" data-category="cakes" style="--delay:0.05s">
+            <div class="flavour-img-wrap"><img src="Remove_titles_and_brighten_image_e98116ed_4K.jpg" alt="Fresh strawberry cream cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Cake</span>
+              <h3>Strawberry</h3>
+              <p>Tender vanilla sponge layered with house-made strawberry compote and light whipped cream.</p>
+            </div>
+          </div>
+
+          <!-- Vanilla (Image: 15.jpg) -->
+          <div class="flavour-card" data-category="cakes" style="--delay:0.1s">
+            <div class="flavour-img-wrap"><img src="15.jpg" alt="Classic vanilla cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Cake</span>
+              <h3>Vanilla</h3>
+              <p>Classic Madagascan vanilla bean sponge infused with smooth chantilly cream.</p>
+            </div>
+          </div>
+
+          <!-- Mixed Fruits -->
+          <div class="flavour-card" data-category="cakes" style="--delay:0.15s">
+            <div class="flavour-img-wrap"><img src="mxd fruit (1).jpg" alt="Mixed fruits cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Cake</span>
+              <h3>Mixed Fruits</h3>
+              <p>Light airy sponge topped with a colorful cascade of fresh kiwi, berries, and tropical fruits.</p>
+            </div>
+          </div>
+
+          <!-- Pineapple -->
+          <div class="flavour-card" data-category="cakes" style="--delay:0.2s">
+            <div class="flavour-img-wrap"><img src="pineapple_flavoured_cream_cake_b4333c58_4K.jpg" alt="Sweet pineapple cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Cake</span>
+              <h3>Pineapple</h3>
+              <p>Moist sponge layered with sweet crushed pineapple cream and a refreshing tropical finish.</p>
+            </div>
+          </div>
+
+          <!-- Mixed Berries -->
+          <div class="flavour-card" data-category="cakes" style="--delay:0.25s">
+            <div class="flavour-img-wrap"><img src="flavour_mixed_berries.jpg" alt="Mixed berries cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Cake</span>
+              <h3>Mixed Berries</h3>
+              <p>Bursting with fresh blueberries, raspberries, and blackberries swirled into silky mousse.</p>
+            </div>
+          </div>
+
+          <!-- Coffee -->
+          <div class="flavour-card" data-category="cakes" style="--delay:0.3s">
+            <div class="flavour-img-wrap"><img src="coffee_flavoured_cream_cake_c3fe1ab3_4K.jpg" alt="Espresso coffee cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Cake</span>
+              <h3>Coffee</h3>
+              <p>Deep espresso-infused sponge with velvety mocha cream for true coffee connoisseurs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. TEA CAKES -->
+      <div class="menu-cat-block" data-cat="teacakes">
+        <div class="menu-cat-head">
+          <h3>Tea Cakes</h3>
+          <span class="menu-cat-line"></span>
+        </div>
+        <div class="flavours-grid">
+          <!-- Cranberry Almond Tea Cake -->
+          <div class="flavour-card" data-category="teacakes" style="--delay:0s">
+            <div class="flavour-img-wrap"><img src="cranberry_almond_tea_cake_5bcfe392_4K.jpg" alt="Cranberry almond tea cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Tea Cake</span>
+              <h3>Cranberry Almond</h3>
+              <p>Tender tea cake studded with ruby cranberries and topped with crunchy toasted almonds.</p>
+            </div>
+          </div>
+
+          <!-- Tutti Fruiti Tea Cake -->
+          <div class="flavour-card" data-category="teacakes" style="--delay:0.05s">
+            <div class="flavour-img-wrap"><img src="tutti fruiti.jpg" alt="Tutti fruiti tea cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Tea Cake</span>
+              <h3>Tutti Fruiti</h3>
+              <p>Nostalgic golden tea cake loaded with vibrant candied fruit morsels and vanilla aroma.</p>
+            </div>
+          </div>
+
+          <!-- Double Chocolate Chip Tea Cake -->
+          <div class="flavour-card" data-category="teacakes" style="--delay:0.1s">
+            <div class="flavour-img-wrap"><img src="Chocolate Tea Cake.jpg" alt="Double chocolate chip tea cake" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Tea Cake</span>
+              <h3>Double Chocolate Chip</h3>
+              <p>Rich cocoa loaf generously packed with premium dark chocolate chips inside and out.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. CUPCAKES -->
+      <div class="menu-cat-block" data-cat="cupcakes">
+        <div class="menu-cat-head">
+          <h3>Cupcakes</h3>
+          <span class="menu-cat-line"></span>
+        </div>
+        <p class="pack-note">Minimum order is 6 cupcakes, in any flavour from our cake menu. Choose a quantity, then pick your flavour, pickup or delivery date, and any special requests.</p>
+        <div class="pack-grid">
+          <div class="pack-card" data-mode="cupcake" data-value="6 cupcakes" role="button" tabindex="0">
+            <div class="pack-img"><img src="cupcakes_6.jpg" alt="6 Cupcakes" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Cupcakes</span>
+            <h3>6 Cupcakes</h3>
+            <p>Our minimum order. Any flavour.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+          <div class="pack-card" data-mode="cupcake" data-value="12 cupcakes" role="button" tabindex="0">
+            <div class="pack-img"><img src="Change_background_and_add_cupcakes_74f11071_4K.jpg" alt="12 Cupcakes" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Cupcakes</span>
+            <h3>12 Cupcakes</h3>
+            <p>A dozen, in any flavour.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+          <div class="pack-card" data-mode="cupcake" data-value="24 cupcakes" role="button" tabindex="0">
+            <div class="pack-img"><img src="cupcakes_24.jpg" alt="24 Cupcakes" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Cupcakes</span>
+            <h3>24 Cupcakes</h3>
+            <p>Two dozen for parties and events.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+          <div class="pack-card" data-mode="cupcake" data-value="Custom (more than 24)" role="button" tabindex="0">
+            <div class="pack-img"><img src="Removing_cupcakes_from_box_47a1402f_4K.jpg" alt="Custom Order" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Cupcakes</span>
+            <h3>Custom Order</h3>
+            <p>Need more than 24? Tell us the quantity and we will make it.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. BROWNIES -->
+      <div class="menu-cat-block" data-cat="brownies">
+        <div class="menu-cat-head">
+          <h3>Brownies</h3>
+          <span class="menu-cat-line"></span>
+        </div>
+        <div class="flavours-grid">
+          <!-- Chocolate Fudge Brownies -->
+          <div class="flavour-card" data-category="brownies" style="--delay:0s">
+            <div class="flavour-img-wrap"><img src="fudge_brownie_4k.jpg" alt="Chocolate fudge brownies" loading="lazy" decoding="async" /></div>
+            <div class="flavour-info">
+              <span class="flavour-cat-badge">Brownie</span>
+              <h3>Chocolate Fudge Brownies</h3>
+              <p>Ultra-fudgy, melt-in-the-mouth brownies with a crinkled top and gooey chocolate core.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. CHOCOLATES -->
+      <div class="menu-cat-block" data-cat="chocolates">
+        <div class="menu-cat-head">
+          <h3>Chocolates</h3>
+          <span class="menu-cat-line"></span>
+        </div>
+        <p class="pack-note">Choose a category, then pick milk, semi-sweet, white or assorted chocolate. Add your pickup or delivery date and any special requests.</p>
+        <div class="pack-grid">
+          <div class="pack-card" data-mode="chocolate" data-value="Regular" role="button" tabindex="0">
+            <div class="pack-img"><img src="choc_regular.jpg" alt="Regular" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Chocolates</span>
+            <h3>Regular</h3>
+            <p>Classic handcrafted chocolates.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+          <div class="pack-card" data-mode="chocolate" data-value="Almond & Raisins" role="button" tabindex="0">
+            <div class="pack-img"><img src="choc_almond_raisins.jpg" alt="Almond and Raisins" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Chocolates</span>
+            <h3>Almond &amp; Raisins</h3>
+            <p>Chocolate with almonds and raisins.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+          <div class="pack-card" data-mode="chocolate" data-value="Dried Fruits &amp; Cranberries" role="button" tabindex="0">
+            <div class="pack-img"><img src="choc_dried_fruits.jpg" alt="Dried Fruits and Cranberries" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Chocolates</span>
+            <h3>Dried Fruits &amp; Cranberries</h3>
+            <p>Chocolate with dried fruits and cranberries.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+                    <div class="pack-card" data-mode="chocolate" data-value="Gourmet Chocolate Sticks" role="button" tabindex="0">
+            <div class="pack-img"><img src="Assorted_gourmet_chocolate_sticks_7ba0cca6_4K.jpg" alt="Gourmet Chocolate Sticks" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Chocolates</span>
+            <h3>Gourmet Chocolate Sticks</h3>
+            <p>Gourmet chocolate sticks.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+          <div class="pack-card" data-mode="chocolate" data-value="Assorted" role="button" tabindex="0">
+            <div class="pack-img"><img src="choc_assorted.jpg" alt="Assorted" loading="lazy" decoding="async" /></div>
+            <span class="flavour-cat-badge">Chocolates</span>
+            <h3>Assorted</h3>
+            <p>A mix of our chocolate categories.</p>
+            <span class="pack-cta">Order</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY SECTION ===== -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Portfolio</div>
+        <h2>Past Creations</h2>
+        <div class="section-divider-line"></div>
+        <p class="section-desc">A showcase of bespoke cakes created for our wonderful clients.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" style="--delay:0.1s">
+          <img src="15 (1).jpg" alt="Custom celebration cake 15A" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.15s">
+          <img src="4.jpg" alt="Custom celebration cake 4" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.2s">
+          <img src="purple_cake_new.jpg" alt="Custom celebration cake 5" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.25s">
+          <img src="6.jpg" alt="Custom celebration cake 6" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.3s">
+          <img src="7.jpg" alt="Custom celebration cake 7" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.35s">
+          <img src="8_fixed.jpg" alt="Custom celebration cake 8" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.4s">
+          <img src="9.JPG" alt="Custom celebration cake 9" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.45s">
+          <img src="15 (2).jpg" alt="Custom celebration cake 15B" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.5s">
+          <img src="11.JPG" alt="Custom celebration cake 11" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.55s">
+          <img src="12.jpg" alt="Custom celebration cake 12" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.6s">
+          <img src="13.JPG" alt="Custom celebration cake 13" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.65s">
+          <img src="14.JPG" alt="Custom celebration cake 14" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.7s">
+          <img src="Edit_cake_background_and_board_bd1bb691_4K.jpg" alt="Artisan celebration cake 15" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.75s">
+          <img src="brighten_image_and_change_background_7d08fe89_4K.jpg" alt="Artisan celebration cake 16" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.8s">
+          <img src="IMG_4398.jpg_11a15691_4K.jpg" alt="Artisan celebration cake 17" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.85s">
+          <img src="20201007_115025.jpg_ae832da3_4K.jpg" alt="Artisan celebration cake 18" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.9s">
+          <img src="20201008_171813.jpg_4fec2e6d_4K.jpg" alt="Artisan celebration cake 19" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery-item" style="--delay:0.95s">
+          <img src="IMG_4381.JPG" alt="Artisan celebration cake 20" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SQUIRREL BAKER MASCOT (floating, bottom-right; click to order) ===== -->
+  <div class="hero-character" id="bakerBtn" role="button" tabindex="0" aria-label="Click the squirrel baker to place an order" title="Click me to place an order!">
+    <div class="bunny-speech">Order your cake</div>
+    <div class="sq-wrap">
+      <img class="sq-arm" src="sq_arm.png?v=3" alt="" draggable="false" />
+      <img class="sq-base" src="sq_base.png?v=3" alt="" draggable="false" />
+      <img class="sq-cup" src="sq_cup.png?v=3" alt="" draggable="false" />
+    </div>
+  </div>
+
+  <!-- ===== FLAVOUR DETAIL POP-UP ===== -->
+  <div id="flavourModal" class="fm" aria-hidden="true">
+    <div class="fm-backdrop" data-fclose></div>
+    <div class="fm-card" role="dialog" aria-modal="true" aria-labelledby="fmTitle">
+      <button type="button" class="order-close" data-fclose aria-label="Close">&times;</button>
+      <div class="fm-img"><img id="fmImg" src="" alt="" /></div>
+      <div class="fm-body">
+        <h2 id="fmTitle" class="fm-title"></h2>
+        <div id="fmPriceBox" class="fm-price-box" hidden>
+          <div class="fm-price-top">
+            <div class="fm-price-left">
+              <span id="fmPriceLabel" class="fm-price-label">Base Price</span>
+              <span id="fmPriceMeta" class="fm-price-meta"></span>
+            </div>
+            <span id="fmPriceVal" class="fm-price-val"></span>
+          </div>
+          <p id="fmPriceNote" class="fm-price-note"></p>
+        </div>
+        <p id="fmDesc" class="fm-desc"></p>
+        <h4 class="fm-sub">What's inside</h4>
+        <ul id="fmList" class="fm-list"></ul>
+        <button type="button" class="btn-primary fm-order" id="fmOrder">Order This Creation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ORDER POP-UP (opens when the baker or any Order button is clicked) ===== -->
+  <div id="orderModal" class="order-modal" aria-hidden="true">
+    <div class="order-modal-backdrop" data-close></div>
+    <div class="order-modal-card" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+      <button type="button" class="order-close" data-close aria-label="Close order form">&times;</button>
+      <div class="order-modal-head">
+        <div class="section-tag">Custom Orders</div>
+        <h2 id="orderTitle">Place Your Order</h2>
+        <p>Pick your flavour and size, tell us the details, and send it to us by text message.</p>
+      </div>
+        <form id="textOrderForm" class="text-order" novalidate>
+          <div class="to-row">
+            <div class="form-group">
+              <label for="toFlavour" id="toFlavourLabel">Flavour</label>
+              <select id="toFlavour">
+                <option value="">Choose a flavour</option>
+            <option>Chocolate</option>
+            <option>Chocolate Truffle Cake</option>
+            <option>Strawberry</option>
+            <option>Vanilla</option>
+            <option>Mixed Fruits</option>
+            <option>Pineapple</option>
+            <option>Mixed Berries</option>
+            <option>Coffee</option>
+            <option>Themed Cake (custom design)</option>
+            <option>Chocolate Fudge Brownies</option>
+            <option>Cranberry Almond Tea Cake</option>
+            <option>Tutti Fruiti Tea Cake</option>
+            <option>Double Chocolate Chip Tea Cake</option>
+            <option>Cupcakes</option>
+            <option>Chocolates</option>
+            <option>Not sure yet - need suggestions</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="toPeople" id="toPeopleLabel">How many people?</label>
+              <select id="toPeople">
+                <option value="">Choose size</option>
+            <option>1 - 5 people</option>
+            <option>6 - 10 people</option>
+            <option>11 - 20 people</option>
+            <option>21 - 30 people</option>
+            <option>30+ people</option>
+              </select>
+            </div>
+          </div>
+          <div class="to-row">
+            <div class="form-group">
+              <label>Pickup or delivery</label>
+              <div class="to-seg" role="radiogroup" aria-label="Pickup or delivery">
+                <label class="to-opt"><input type="radio" name="toMethod" value="Pickup" /><span>Pickup</span></label>
+                <label class="to-opt"><input type="radio" name="toMethod" value="Delivery" /><span>Delivery</span></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="toDate">Date required</label>
+              <input type="date" id="toDate" />
+            </div>
+          </div>
+          <p class="to-rule" id="toModeNote" hidden></p>
+          <p class="to-rule">All orders must be made at least 2 days prior to the occasion.</p>
+          <div class="form-group">
+            <label for="toMessage">Message</label>
+            <textarea id="toMessage" rows="5" placeholder="Occasion, date needed, design ideas, allergies, anything else you would like us to know"></textarea>
+          </div>
+          <div class="to-actions">
+            <button type="button" class="btn-submit" id="toText">Send as Text Message</button>
+          </div>
+          <p class="to-note" id="toNote">Text opens your messaging app with your order ready to send.</p>
+        </form>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff"></path>
+      </svg>
+    </div>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-c">C</span>akravings
+        <span class="footer-tagline">Bakery</span>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Connect With Us</h4>
+          <p>Buffalo, NY</p>
+          <p>Call or text for inquiries or to order</p>
+          <p><a href="tel:+17164741447">(716) 474-1447</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <p>Bespoke Custom Cakes</p>
+          <p>Signature Cupcakes</p>
+          <p>Brownies &amp; Confections</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#flavours">Menu &amp; Pricing</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#order">Order Now</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; Cakravings Bakery. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=72"></script>
+</body>
+</html>
