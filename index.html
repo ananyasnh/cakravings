@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%23f8ccde%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-size=%2738%27 text-anchor=%27middle%27 font-family=%27Georgia%27 font-weight=%27bold%27 fill=%27%23381c2d%27%3EC%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="style.css?v=85" />
+  <link rel="stylesheet" href="style.css?v=86" />
 </head>
 <body>
 
@@ -35,6 +35,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#flavours">Menu &amp; Pricing</a></li>
       <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#order" class="nav-order-btn">Order Now</a></li>
     </ul>
     <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -432,6 +433,43 @@
     </div>
   </section>
 
+  <!-- ===== REVIEWS SECTION ===== -->
+  <section id="reviews" class="reviews">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Kind Words</div>
+        <h2>Customer Reviews</h2>
+        <div class="section-divider-line"></div>
+        <p class="section-desc">Ordered from Cakravings? We would love to hear how it went.</p>
+      </div>
+      <div class="review-list" id="reviewList"></div>
+      <form class="review-form" id="reviewForm" novalidate>
+        <h3>Leave a Review</h3>
+        <div class="form-group">
+          <label for="rvName">Your name</label>
+          <input type="text" id="rvName" maxlength="60" autocomplete="name" placeholder="First name is fine" />
+        </div>
+        <div class="form-group">
+          <label id="rvStarsLabel">Your rating</label>
+          <div class="rv-stars" role="radiogroup" aria-labelledby="rvStarsLabel">
+            <input type="radio" name="rvRating" id="rvStar5" value="5" /><label for="rvStar5" title="5 stars">&#9733;</label>
+            <input type="radio" name="rvRating" id="rvStar4" value="4" /><label for="rvStar4" title="4 stars">&#9733;</label>
+            <input type="radio" name="rvRating" id="rvStar3" value="3" /><label for="rvStar3" title="3 stars">&#9733;</label>
+            <input type="radio" name="rvRating" id="rvStar2" value="2" /><label for="rvStar2" title="2 stars">&#9733;</label>
+            <input type="radio" name="rvRating" id="rvStar1" value="1" /><label for="rvStar1" title="1 star">&#9733;</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="rvText">Your review</label>
+          <textarea id="rvText" rows="4" maxlength="800" placeholder="What did you order? How was it?"></textarea>
+        </div>
+        <input type="text" id="rvHoney" class="rv-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit" class="btn-submit" id="rvSubmit">Submit Review</button>
+        <p class="to-note" id="rvNote">Reviews are shown on the website after we approve them.</p>
+      </form>
+    </div>
+  </section>
+
   <!-- ===== SQUIRREL BAKER MASCOT (floating, bottom-right; click to order) ===== -->
   <div class="hero-character" id="bakerBtn" role="button" tabindex="0" aria-label="Click the squirrel baker to place an order" title="Click me to place an order!">
     <div class="bunny-speech">Order your cake</div>
@@ -574,6 +612,7 @@
           <a href="#about">About</a>
           <a href="#flavours">Menu &amp; Pricing</a>
           <a href="#gallery">Gallery</a>
+          <a href="#reviews">Reviews</a>
           <a href="#order">Order Now</a>
         </div>
       </div>
@@ -583,6 +622,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=73"></script>
+  <script src="script.js?v=74"></script>
 </body>
 </html>

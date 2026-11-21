@@ -2382,3 +2382,23 @@ iframe[src*="app.netlify.com"] {
 
 .hero .hero-sub { margin-bottom: 0 !important; }
 .hero-sub + .hero-badge { margin: 8px 0 0 !important; }
+
+/* ===== Reviews ===== */
+.reviews { padding: 90px 0; background: var(--pink-soft); }
+.review-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; max-width: 1000px; margin: 0 auto 44px; }
+.review-card { background: var(--white); border: 1px solid var(--border-light); border-radius: 20px; padding: 24px 22px; box-shadow: 0 4px 20px var(--shadow-subtle); text-align: center; }
+.review-stars { color: var(--accent-dark); font-size: 1.2rem; letter-spacing: 3px; margin-bottom: 10px; }
+.review-text { color: var(--accent-soft); font-size: 0.95rem; line-height: 1.65; margin: 0 0 12px; }
+.review-name { font-family: var(--font-display); color: var(--accent-dark); font-weight: 600; }
+.review-empty { grid-column: 1 / -1; text-align: center; color: var(--accent-muted); font-size: 1rem; }
+.review-form { max-width: 560px; margin: 0 auto; background: var(--white); border: 1px solid var(--border-light); border-radius: 22px; padding: 30px 26px; box-shadow: 0 6px 24px var(--shadow-subtle); }
+.review-form h3 { font-family: var(--font-display); color: var(--accent-dark); text-align: center; margin: 0 0 20px; font-size: 1.5rem; }
+.rv-stars { display: inline-flex; flex-direction: row-reverse; justify-content: flex-end; gap: 4px; }
+.rv-stars input { position: absolute; opacity: 0; pointer-events: none; }
+.rv-stars label { font-size: 2rem; line-height: 1; color: #e6d3dd; cursor: pointer; transition: color 0.15s ease; }
+.rv-stars label:hover, .rv-stars label:hover ~ label, .rv-stars input:checked ~ label { color: var(--accent-dark); }
+.rv-stars input:focus-visible + label { outline: 2px solid var(--accent-dark); border-radius: 4px; }
+.rv-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.review-form .btn-submit { width: 100%; }
+.review-form .to-note { text-align: center; margin-top: 12px; }
+@media (max-width: 768px) { .reviews { padding: 60px 0; } .review-form { padding: 24px 18px; } }

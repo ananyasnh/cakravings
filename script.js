@@ -797,3 +797,69 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
   ['click', 'touchstart', 'scroll', 'keydown'].forEach(ev => window.addEventListener(ev, () => { kick(hero); }, { once: true, passive: true }));
   document.addEventListener('visibilitychange', () => { if (!document.hidden) kick(hero); });
 })();
+
+// ---- Customer reviews ----
+// Approved reviews are listed here. To show a review, add a line like:
+//   { name: 'Priya', rating: 5, text: 'The strawberry cake was perfect!' },
+const REVIEWS = [
+];
+// To receive new reviews by email, get a free access key at https://web3forms.com and paste it here.
+// While this is empty, a submitted review opens as a text message to the bakery phone instead.
+const REVIEW_FORM_KEY = '';
+
+(function initReviews() {
+  const list = document.getElementById('reviewList');
+  const form = document.getElementById('reviewForm');
+  if (!list || !form) return;
+  const note = document.getElementById('rvNote');
+  const say = (t, err) => { note.textContent = t; note.classList.toggle('error', !!err); };
+
+  function stars(n) { return '\u2605'.repeat(n) + '\u2606'.repeat(5 - n); }
+  if (!REVIEWS.length) {
+    const p = document.createElement('p');
+    p.className = 'review-empty';
+    p.textContent = 'Be the first to share your experience with Cakravings.';
+    list.appendChild(p);
+  } else {
+    REVIEWS.forEach(r => {
+      const c = document.createElement('div');
+      c.className = 'review-card';
+      const s = document.createElement('div'); s.className = 'review-stars'; s.textContent = stars(r.rating || 5);
+      const t = document.createElement('p'); t.className = 'review-text'; t.textContent = '\u201C' + r.text + '\u201D';
+      const n = document.createElement('div'); n.className = 'review-name'; n.textContent = '\u2014 ' + r.name;
+      c.appendChild(s); c.appendChild(t); c.appendChild(n);
+      list.appendChild(c);
+    });
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (document.getElementById('rvHoney').value) return;
+    const name = document.getElementById('rvName').value.trim();
+    const text = document.getElementById('rvText').value.trim();
+    const picked = form.querySelector('input[name="rvRating"]:checked');
+    if (!name || !picked || text.length < 5) { say('Please add your name, a star rating and a short review.', true); return; }
+    const rating = picked.value;
+    const btn = document.getElementById('rvSubmit');
+
+    if (REVIEW_FORM_KEY) {
+      btn.disabled = true; say('Sending...');
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ access_key: REVIEW_FORM_KEY, subject: 'New Cakravings review', name, rating: rating + ' / 5', message: text })
+        });
+        const data = await res.json();
+        if (data.success) { form.reset(); say('Thank you! Your review will appear after we approve it.'); }
+        else say('Sorry, that did not send. Please try again.', true);
+      } catch (err) { say('Sorry, that did not send. Please try again.', true); }
+      btn.disabled = false;
+    } else {
+      const body = 'New review for Cakravings\nName: ' + name + '\nRating: ' + rating + '/5\nReview: ' + text;
+      const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      say('Opening your messaging app. Press send to share your review.');
+      window.location.href = 'sms:' + ORDER_PHONE + (isiOS ? '&' : '?') + 'body=' + encodeURIComponent(body);
+    }
+  });
+})();
