@@ -798,39 +798,51 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
   document.addEventListener('visibilitychange', () => { if (!document.hidden) kick(hero); });
 })();
 
-// ---- Customer reviews ----
-// Approved reviews are listed here. To show a review, add a line like:
-//   { name: 'Priya', rating: 5, text: 'The strawberry cake was perfect!' },
-const REVIEWS = [
-];
-// To receive new reviews by email, get a free access key at https://web3forms.com and paste it here.
-// While this is empty, a submitted review opens as a text message to the bakery phone instead.
-const REVIEW_FORM_KEY = '';
+// ---- Customer reviews (shared by everyone, scrolling row) ----
+const REVIEWS_API = 'https://cakravings-reviews.ananyasnh2.workers.dev/reviews';
 
 (function initReviews() {
-  const list = document.getElementById('reviewList');
+  const track = document.getElementById('reviewList');
+  const marquee = document.getElementById('reviewMarquee');
   const form = document.getElementById('reviewForm');
-  if (!list || !form) return;
+  if (!track || !marquee || !form) return;
   const note = document.getElementById('rvNote');
   const say = (t, err) => { note.textContent = t; note.classList.toggle('error', !!err); };
+  let reviews = [];
 
   function stars(n) { return '\u2605'.repeat(n) + '\u2606'.repeat(5 - n); }
-  if (!REVIEWS.length) {
-    const p = document.createElement('p');
-    p.className = 'review-empty';
-    p.textContent = 'Be the first to share your experience with Cakravings.';
-    list.appendChild(p);
-  } else {
-    REVIEWS.forEach(r => {
-      const c = document.createElement('div');
-      c.className = 'review-card';
-      const s = document.createElement('div'); s.className = 'review-stars'; s.textContent = stars(r.rating || 5);
-      const t = document.createElement('p'); t.className = 'review-text'; t.textContent = '\u201C' + r.text + '\u201D';
-      const n = document.createElement('div'); n.className = 'review-name'; n.textContent = '\u2014 ' + r.name;
-      c.appendChild(s); c.appendChild(t); c.appendChild(n);
-      list.appendChild(c);
-    });
+  function card(r) {
+    const c = document.createElement('div');
+    c.className = 'review-card';
+    const s = document.createElement('div'); s.className = 'review-stars'; s.textContent = stars(r.rating || 5);
+    const t = document.createElement('p'); t.className = 'review-text'; t.textContent = '\u201C' + r.text + '\u201D';
+    const n = document.createElement('div'); n.className = 'review-name'; n.textContent = '\u2014 ' + r.name;
+    c.appendChild(s); c.appendChild(t); c.appendChild(n);
+    return c;
   }
+  function render() {
+    track.innerHTML = '';
+    track.style.animation = 'none';
+    if (!reviews.length) {
+      const p = document.createElement('p');
+      p.className = 'review-empty';
+      p.textContent = 'Be the first to share your experience with Cakravings.';
+      track.appendChild(p);
+      marquee.classList.remove('moving');
+      return;
+    }
+    // repeat the set so the row is always full, then twice so it loops without a gap
+    const reps = Math.max(1, Math.ceil(6 / reviews.length));
+    const once = [];
+    for (let k = 0; k < reps; k++) reviews.forEach(r => once.push(r));
+    once.concat(once).forEach(r => track.appendChild(card(r)));
+    marquee.classList.add('moving');
+    track.style.setProperty('--dur', Math.max(24, once.length * 7) + 's');
+    track.style.animation = '';
+  }
+
+  fetch(REVIEWS_API).then(r => r.json()).then(list => { if (Array.isArray(list)) reviews = list; render(); }).catch(render);
+  render();
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -839,27 +851,26 @@ const REVIEW_FORM_KEY = '';
     const text = document.getElementById('rvText').value.trim();
     const picked = form.querySelector('input[name="rvRating"]:checked');
     if (!name || !picked || text.length < 5) { say('Please add your name, a star rating and a short review.', true); return; }
-    const rating = picked.value;
     const btn = document.getElementById('rvSubmit');
-
-    if (REVIEW_FORM_KEY) {
-      btn.disabled = true; say('Sending...');
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ access_key: REVIEW_FORM_KEY, subject: 'New Cakravings review', name, rating: rating + ' / 5', message: text })
-        });
-        const data = await res.json();
-        if (data.success) { form.reset(); say('Thank you! Your review will appear after we approve it.'); }
-        else say('Sorry, that did not send. Please try again.', true);
-      } catch (err) { say('Sorry, that did not send. Please try again.', true); }
-      btn.disabled = false;
-    } else {
-      const body = 'New review for Cakravings\nName: ' + name + '\nRating: ' + rating + '/5\nReview: ' + text;
-      const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-      say('Opening your messaging app. Press send to share your review.');
-      window.location.href = 'sms:' + ORDER_PHONE + (isiOS ? '&' : '?') + 'body=' + encodeURIComponent(body);
+    btn.disabled = true; say('Posting...');
+    try {
+      const res = await fetch(REVIEWS_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, rating: picked.value, text })
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        reviews.unshift(data.review);
+        render();
+        form.reset();
+        say('Thank you! Your review is now on the website.');
+      } else {
+        say(data.error || 'Sorry, that did not post. Please try again.', true);
+      }
+    } catch (err) {
+      say('Sorry, that did not post. Please try again.', true);
     }
+    btn.disabled = false;
   });
 })();
