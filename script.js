@@ -828,16 +828,23 @@ const REVIEWS_API = 'https://cakravings-reviews.ananyasnh2.workers.dev/reviews';
       p.className = 'review-empty';
       p.textContent = 'Be the first to share your experience with Cakravings.';
       track.appendChild(p);
-      marquee.classList.remove('moving');
+      marquee.classList.remove('moving', 'still');
       return;
     }
-    // repeat the set so the row is always full, then twice so it loops without a gap
+    // 1-2 reviews stay still and centered; 3 or more drift slowly across the row
+    if (reviews.length <= 2) {
+      reviews.forEach(r => track.appendChild(card(r)));
+      marquee.classList.remove('moving');
+      marquee.classList.add('still');
+      return;
+    }
+    marquee.classList.remove('still');
     const reps = Math.max(1, Math.ceil(6 / reviews.length));
     const once = [];
     for (let k = 0; k < reps; k++) reviews.forEach(r => once.push(r));
     once.concat(once).forEach(r => track.appendChild(card(r)));
     marquee.classList.add('moving');
-    track.style.setProperty('--dur', Math.max(24, once.length * 7) + 's');
+    track.style.setProperty('--dur', Math.max(90, once.length * 22) + 's');
     track.style.animation = '';
   }
 

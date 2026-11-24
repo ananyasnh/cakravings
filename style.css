@@ -2418,3 +2418,7 @@ iframe[src*="app.netlify.com"] {
   .review-marquee { overflow-x: auto; }
   .review-marquee.moving .review-track { animation: none; }
 }
+
+/* 1-2 reviews: steady and centered */
+.review-marquee.still { -webkit-mask-image: none; mask-image: none; }
+.review-marquee.still .review-track { width: auto; justify-content: center; flex-wrap: wrap; }
