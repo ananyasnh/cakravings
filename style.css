@@ -2338,8 +2338,9 @@ iframe[src*="app.netlify.com"] {
   color: var(--accent-muted);
   font-size: 0.9rem;
   line-height: 1.55;
-  margin: 0 0 16px;
+  margin: 0;
 }
+.pack-cta[hidden] { display: none; }
 .pack-cta {
   display: inline-block;
   background: var(--accent-dark);
