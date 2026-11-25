@@ -511,16 +511,6 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
     if (flavour.value === 'Cupcakes') window.setOrderMode('cupcake');
     else if (flavour.value === 'Chocolates') window.setOrderMode('chocolate');
   });
-  document.querySelectorAll('.pack-card').forEach(c => {
-    const go = () => {
-      window.__packOpen = true;
-      if (window.openOrder) window.openOrder();
-      window.__packOpen = false;
-      window.setOrderMode(c.dataset.mode, c.dataset.value);
-    };
-    c.addEventListener('click', go);
-    c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-  });
 
   function pad(n) { return String(n).padStart(2, '0'); }
   function minDate() {
@@ -687,7 +677,7 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
 
   function open(card) {
     const name = card.querySelector('h3').textContent.trim();
-    const key = norm(name);
+    const key = card.dataset.key || norm(name);
     const data = D[key] || {
       t: name,
       img: card.querySelector('img').getAttribute('src'),
@@ -708,15 +698,35 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
       'tutti fruiti': { label: 'Price', price: '$35', meta: 'Tea Cake · Each', note: '' },
       'double chocolate chip': { label: 'Price', price: '$35', meta: 'Tea Cake · Each', note: '' }
     };
+    const EXTRA = 'Prices are for basic chocolate. Almonds, raisins, dried fruits or any other extras are charged extra.';
+    const PP = {
+      cup6: { label: 'Price', price: '$25', meta: '6 cupcakes \u00b7 Any flavour', note: 'Minimum order is 6 cupcakes. Choose any flavour from our cake menu.' },
+      cup12: { label: 'Price', price: '$45', meta: '12 cupcakes \u00b7 Any flavour', note: 'Choose any flavour from our cake menu.' },
+      cup24: { label: 'Price', price: '$90', meta: '24 cupcakes \u00b7 Any flavour', note: 'Choose any flavour from our cake menu.' },
+      cupcustom: { label: 'Per Piece', price: '$4.50', meta: 'More than 24 cupcakes \u00b7 Any flavour', note: 'Choose Custom and tell us how many cupcakes you need.' },
+      chocbasic: { label: 'Basic Pricing', tiers: [['12 pieces', '$20'], ['24 pieces', '$40']], note: EXTRA },
+      chocsticks: { label: 'Basic Pricing', tiers: [['8 sticks', '$25'], ['16 sticks', '$50']], note: EXTRA }
+    };
     fmTitle.textContent = data.t;
     const pBox = document.getElementById('fmPriceBox');
-    const pInfo = P[key];
+    const pInfo = P[key] || PP[card.dataset.key];
     if (pBox) {
       if (pInfo) {
         pBox.hidden = false;
         document.getElementById('fmPriceLabel').textContent = pInfo.label;
-        document.getElementById('fmPriceMeta').textContent = pInfo.meta;
-        document.getElementById('fmPriceVal').textContent = pInfo.price;
+        document.getElementById('fmPriceMeta').textContent = pInfo.meta || '';
+        const valEl = document.getElementById('fmPriceVal');
+        const tiersEl = document.getElementById('fmPriceTiers');
+        tiersEl.innerHTML = '';
+        if (pInfo.tiers) {
+          valEl.style.display = 'none';
+          tiersEl.hidden = false;
+          pInfo.tiers.forEach(t => { const li = document.createElement('li'); const a = document.createElement('span'); a.textContent = t[0]; const b = document.createElement('strong'); b.textContent = t[1]; li.appendChild(a); li.appendChild(b); tiersEl.appendChild(li); });
+        } else {
+          valEl.style.display = '';
+          valEl.textContent = pInfo.price;
+          tiersEl.hidden = true;
+        }
         const pNote = document.getElementById('fmPriceNote');
         pNote.textContent = pInfo.note || '';
         pNote.style.display = pInfo.note ? '' : 'none';
@@ -730,6 +740,8 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
     fmList.parentElement.querySelector('.fm-sub').style.display = data.l.length ? '' : 'none';
     fmImg.alt = data.t;
     modal.dataset.flavour = name;
+    modal.dataset.mode = card.dataset.mode || '';
+    modal.dataset.value = card.dataset.value || '';
     const token = ++openToken;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
@@ -756,11 +768,23 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
     if (!document.getElementById('orderModal').classList.contains('open')) document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.flavour-card').forEach(card => card.addEventListener('click', () => open(card)));
+  document.querySelectorAll('.flavour-card, .pack-card').forEach(card => {
+    card.addEventListener('click', () => open(card));
+    if (card.classList.contains('pack-card')) card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); } });
+  });
   modal.querySelectorAll('[data-fclose]').forEach(el => el.addEventListener('click', close));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
 
   document.getElementById('fmOrder').addEventListener('click', () => {
+    if (modal.dataset.mode) {
+      const mode = modal.dataset.mode, val = modal.dataset.value;
+      close();
+      window.__packOpen = true;
+      if (window.openOrder) window.openOrder();
+      window.__packOpen = false;
+      if (window.setOrderMode) window.setOrderMode(mode, val);
+      return;
+    }
     const want = norm(modal.dataset.flavour);
     close();
     if (window.openOrder) window.openOrder();

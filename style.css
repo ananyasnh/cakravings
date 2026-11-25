@@ -2422,3 +2422,9 @@ iframe[src*="app.netlify.com"] {
 /* 1-2 reviews: steady and centered */
 .review-marquee.still { -webkit-mask-image: none; mask-image: none; }
 .review-marquee.still .review-track { width: auto; justify-content: center; flex-wrap: wrap; }
+
+/* Pop-up price list (chocolates) */
+.fm-price-tiers { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.fm-price-tiers li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 14px; background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; color: var(--accent-soft); }
+.fm-price-tiers li strong { font-family: var(--font-display); font-size: 1.25rem; color: var(--accent-dark); }
+.fm-price-tiers[hidden] { display: none; }
