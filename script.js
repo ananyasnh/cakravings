@@ -480,6 +480,7 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
   const MODES = {
     cake: { title: 'Place Your Order', sub: 'Pick your flavour and size, tell us the details, and send it to us by text or Instagram.', fl: 'Flavour', flPh: 'Choose a flavour', flOpts: null, ppl: 'How many people?', pplPh: 'Choose size', pplOpts: null, flKey: 'Flavour', pplKey: 'For', need: 'a flavour and how many people', note: '' },
     cupcake: { title: 'Order Cupcakes', sub: 'Pick your quantity and flavour, tell us the details, and send it to us by text or Instagram.', fl: 'Flavour', flPh: 'Choose a flavour', flOpts: CAKE_FLAVOURS, ppl: 'How many cupcakes?', pplPh: 'Choose quantity', pplOpts: ['6 cupcakes', '12 cupcakes', '24 cupcakes', 'Custom (more than 24)'], flKey: 'Cupcake flavour', pplKey: 'Quantity', need: 'a flavour and quantity', note: 'Minimum order is 6 cupcakes, in any flavour. For more than 24, choose Custom and tell us the quantity in your message.', msgPh: 'Custom quantity, special requests, design ideas, allergies, anything else you would like us to know' },
+    brownie: { title: 'Order Brownies', sub: 'Pick pre-cut or whole and your topping, tell us the details, and send it to us by text or Instagram.', fl: 'Pre-cut or whole', flPh: 'Choose one', flOpts: ['Pre-cut pieces', 'Whole'], ppl: 'Topping', pplPh: 'Choose a topping', pplOpts: ['No topping', 'Chocolate ganache', 'White chocolate ganache', 'Nutella', 'Biscoff spread'], flKey: 'Brownies', pplKey: 'Topping', need: 'pre-cut or whole and a topping', note: '', msgPh: 'Quantity, special requests, allergies, anything else you would like us to know' },
     chocolate: { title: 'Order Chocolates', sub: 'Pick your category and chocolate type, tell us the details, and send it to us by text or Instagram.', fl: 'Category', flPh: 'Choose a category', flOpts: ['Regular', 'Almond & Raisins', 'Dried Fruits & Cranberries', 'Gourmet Chocolate Sticks', 'Assorted'], ppl: 'Chocolate type', pplPh: 'Choose a type', pplOpts: ['Milk', 'Semi-Sweet', 'White', 'Assorted'], flKey: 'Chocolate category', pplKey: 'Chocolate type', need: 'a category and chocolate type', note: '', msgPh: 'Quantity, special requests, gifting details, allergies, anything else you would like us to know' }
   };
   let curMode = 'cake';
@@ -510,6 +511,7 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
     if (curMode !== 'cake') return;
     if (flavour.value === 'Cupcakes') window.setOrderMode('cupcake');
     else if (flavour.value === 'Chocolates') window.setOrderMode('chocolate');
+    else if (flavour.value === 'Chocolate Fudge Brownies') window.setOrderMode('brownie');
   });
 
   function pad(n) { return String(n).padStart(2, '0'); }
@@ -527,7 +529,7 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
 
   function buildMessage() {
     const lines = ['Hi Cakravings! I would like to place an order.'];
-    if (curMode !== 'cake') lines.push('Order type: ' + (curMode === 'cupcake' ? 'Cupcakes' : 'Chocolates'));
+    if (curMode !== 'cake') lines.push('Order type: ' + ({ cupcake: 'Cupcakes', chocolate: 'Chocolates', brownie: 'Brownies' }[curMode]));
     if (flavour.value) lines.push(MODES[curMode].flKey + ': ' + flavour.value);
     if (people.value) lines.push(MODES[curMode].pplKey + ': ' + people.value);
     const method = form.querySelector('input[name="toMethod"]:checked');
@@ -693,7 +695,7 @@ const INSTAGRAM_DM = 'https://ig.me/m/cakravings_';
       'strawberry': { label: 'Base Price', price: '$50', meta: '1.5 lbs · Serves 2–4 people', note: 'Customised cakes vary according to size, flavour, and design.' },
       'mixed berries': { label: 'Base Price', price: '$50', meta: '1.5 lbs · Serves 2–4 people', note: 'Customised cakes vary according to size, flavour, and design.' },
       'chocolate truffle cake': { label: 'Base Price', price: '$60', meta: '1.5–2 lbs min · Serves 3–6 people', note: 'Customised cakes vary according to size, flavour, and design.' },
-      'chocolate fudge brownies': { label: 'Base Price', price: '$45', meta: '1.5–2 lbs', note: '' },
+      'chocolate fudge brownies': { label: 'Base Price', price: '$35', meta: '1.5–2 lbs', note: '' },
       'cranberry almond': { label: 'Price', price: '$35', meta: 'Tea Cake · Each', note: '' },
       'tutti fruiti': { label: 'Price', price: '$35', meta: 'Tea Cake · Each', note: '' },
       'double chocolate chip': { label: 'Price', price: '$35', meta: 'Tea Cake · Each', note: '' }
